@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 # Lark Swagger
-readonly SWAGER_UI='swaggerapi/swagger-ui';
-readonly SWAGER_EDITOR='swaggerapi/swagger-editor';
+readonly SWAGGER_UI='swaggerapi/swagger-ui';
+readonly SWAGGER_EDITOR='swaggerapi/swagger-editor';
 
 ### Swagger-UI
 # 
@@ -34,12 +34,11 @@ readonly SWAGER_EDITOR='swaggerapi/swagger-editor';
 # [0]: https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md#docker
 ###
 ui() {
-    echo "\033[0;32mStart docker container ${SWAGER_EDITOR} at 3000...\033[0m"
-    if ! docker ps | grep "${SWAGER_UI}" > '/dev/null' 2>&1; then
-	echo "Start docker container ${SWAGER_UI} ..."
-	docker rm "${SWAGER_UI}" > '/dev/null' 2>&1
-	docker run -p 80:3000 swaggerapi/swagger-ui
+    if ! docker ps | grep "${SWAGGER_UI}" > '/dev/null' 2>&1; then
+	echo "Start docker container ${SWAGGER_UI} at 3000..."
 	echo 'Input C-c to stop...'
+	docker rm "${SWAGGER_UI}" > '/dev/null' 2>&1
+	docker run  --name 'swagger-ui' -p 80:3000 "${SWAGGER_UI}" 
     fi
 }
 
@@ -81,10 +80,10 @@ ui() {
 # [0]: https://hub.docker.com/r/swaggerapi/swagger-editor/
 ###
 editor() {
-    if ! docker ps | grep "${SWAGER_EDITOR}" > '/dev/null' 2>&1; then
-	echo "\033[0;32mStart docker container ${SWAGER_EDITOR} at 5000...\033[0m"
-	docker rm "${SWAGER_EDITOR}" > '/dev/null' 2>&1
-	docker run -d -p 80:8080 swaggerapi/swagger-editor
+    if ! docker ps | grep "${SWAGGER_EDITOR}" > '/dev/null' 2>&1; then
+	echo "Start docker container ${SWAGGER_EDITOR} at 5000..."
+	docker rm "${SWAGGER_EDITOR}" > '/dev/null' 2>&1
+	docker run -d --name 'swagger-editor' -p 80:8080 "${SWAGGER_EDITOR}"
     fi
 }
 

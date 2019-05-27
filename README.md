@@ -1,5 +1,11 @@
 # Lazy-swagger
 
+Swagger-ui / Swagger-editor docker scripts wrapper.
+
+_Please install [docker-server](https://www.docker.com/products/docker-desktop) on your pc/server first._
+
+## Usage
+
 ```shell
 Usage: sh swagger.sh <COMMAND>
 
@@ -10,6 +16,21 @@ Command:
 	usage    ~>   show usage
 EOF
 ```
+
+__Note__: if you want to serve your `swagger-ui`, you can export your `SWAGGER_JSON`'s path to `~/.bashrc` that swagger-ui can auto load your api, otherwise, try this:
+
+```
+SWAGGER_JSON='/path/to/swagger.json sh swagger.sh <COMMAND>'
+```
+
+__Note__: if you want to stop `swagger-editor`, just exec `docker stop swagger-editor`.
+
+
+## TODO
++ [ ] set `SWAGGER_JSON`
++ [ ] stop docker containers
++ [ ] implement in packages
+  + [ ] node or rust? ruby?
 
 ## Official Repo
 [swagger][0]
