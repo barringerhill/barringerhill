@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # Lark Swagger
+### style-guide: https://google.github.io/styleguide/shell.xml
 readonly SWAGGER_UI='swaggerapi/swagger-ui';
 readonly SWAGGER_EDITOR='swaggerapi/swagger-editor';
 
