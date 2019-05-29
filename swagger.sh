@@ -39,7 +39,7 @@ ui() {
 	echo "Start docker container ${SWAGGER_UI} at 3000..."
 	echo 'Input C-c to stop...'
 	docker rm "${SWAGGER_UI}" > '/dev/null' 2>&1
-	docker run  --name 'swagger-ui' -p 80:3000 "${SWAGGER_UI}" 
+	docker run  --name 'swagger-ui' -p 3000:8080 "${SWAGGER_UI}" 
     fi
 }
 
@@ -84,7 +84,7 @@ editor() {
     if ! docker ps | grep "${SWAGGER_EDITOR}" > '/dev/null' 2>&1; then
 	echo "Start docker container ${SWAGGER_EDITOR} at 5000..."
 	docker rm "${SWAGGER_EDITOR}" > '/dev/null' 2>&1
-	docker run -d --name 'swagger-editor' -p 80:8080 "${SWAGGER_EDITOR}"
+	docker run -d --name 'swagger-editor' -p 5000:8080 "${SWAGGER_EDITOR}"
     fi
 }
 
